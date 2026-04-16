@@ -164,7 +164,19 @@ def normalized_cross_correlation(f, g):
 
     out = None
     ### YOUR CODE HERE
-    pass
+    Hf, Wf = f.shape
+    Hg, Wg = g.shape
+
+    g_normalized = (g - np.mean(g)) / np.std(g)
+
+    padded = zero_pad(f, Hg // 2, Wg // 2)
+    out = np.zeros((Hf, Wf))
+
+    for m in range(Hf):
+        for n in range(Wf):
+            patch = padded[m:m+Hg, n:n+Wg]
+            patch_normalized = (patch - np.mean(patch)) / np.std(patch)
+            out[m, n] = np.sum(g_normalized * patch_normalized)
     ### END YOUR CODE
 
     return out
