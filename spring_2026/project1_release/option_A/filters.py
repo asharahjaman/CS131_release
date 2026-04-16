@@ -63,7 +63,8 @@ def zero_pad(image, pad_height, pad_width):
     out = None
 
     ### YOUR CODE HERE
-    pass
+    out = np.zeros((H + 2 * pad_height, W + 2 * pad_width))
+    out[pad_height:pad_height + H, pad_width:pad_width + W] = image
     ### END YOUR CODE
     return out
 
