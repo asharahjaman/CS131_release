@@ -93,7 +93,12 @@ def conv_fast(image, kernel):
     out = np.zeros((Hi, Wi))
 
     ### YOUR CODE HERE
-    pass
+    kernel_flipped = np.flip(kernel)
+    padded = zero_pad(image, Hk // 2, Wk // 2)
+
+    for m in range(Hi):
+        for n in range(Wi):
+            out[m, n] = np.sum(padded[m:m+Hk, n:n+Wk] * kernel_flipped)
     ### END YOUR CODE
 
     return out
