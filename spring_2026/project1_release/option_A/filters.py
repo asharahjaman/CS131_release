@@ -29,7 +29,14 @@ def conv_nested(image, kernel):
     out = np.zeros((Hi, Wi))
 
     ### YOUR CODE HERE
-    pass
+    for m in range(Hi):
+        for n in range(Wi):
+            for i in range(Hk):
+                for j in range(Wk):
+                    ii = m - i + Hk // 2
+                    jj = n - j + Wk // 2
+                    if 0 <= ii < Hi and 0 <= jj < Wi:
+                        out[m, n] += kernel[i, j] * image[ii, jj]
     ### END YOUR CODE
 
     return out
