@@ -140,7 +140,7 @@ def zero_mean_cross_correlation(f, g):
 
     out = None
     ### YOUR CODE HERE
-    pass
+    out = cross_correlation(f, g - np.mean(g))
     ### END YOUR CODE
 
     return out
